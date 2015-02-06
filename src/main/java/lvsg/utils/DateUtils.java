@@ -4,11 +4,24 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 
+ * Utilities methods for Date.
+ * 
+ * @author Lucas Gonçalves
+ *
+ */
 public class DateUtils {
 	public static final String	P_HH_MM_SS	= "HH:mm:ss";
 	public static final String	P_FILE_NAME	= "yyyyMMdd-HHmm";
 
-	public static Date convertDiaMesAno(String dataStr) {
+	/**
+	 * Typical Brasillian date
+	 * 
+	 * @param dataStr
+	 * @return
+	 */
+	public static Date convertDayMonthYear(String dataStr) {
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 		try {
 			return new Date(format.parse(dataStr).getTime());
@@ -18,13 +31,12 @@ public class DateUtils {
 	}
 
 	public static String toStringFull(Date date) {
-		if (date == null)
-			return null;
+		if (date == null) return null;
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		return format.format(date);
 	}
 
-	public static String ConverteHH_MM_SS(Date date) {
+	public static String toHH_MM_SS(Date date) {
 		return toString(P_HH_MM_SS, date);
 	}
 
@@ -53,8 +65,7 @@ public class DateUtils {
 	}
 
 	public static String toString(String pattern, Date date) {
-		if (date == null)
-			return null;
+		if (date == null) return null;
 		SimpleDateFormat format = new SimpleDateFormat(pattern);
 		return format.format(date);
 	}
